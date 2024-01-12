@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Horus Fast Food </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('Ovaj računar/preuzimanja/pozadina.jpg'); /* Postavite pravilnu putanju do vaÅ¡e slike */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu-icon {
+            cursor: pointer;
+            padding: 10px;
+            color: #fff;
+        }
+
+        #menu-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: none; /* Inicijalno sakrij meni */
+        }
+
+        #menu-list li {
+            padding: 10px;
+            text-align: center;
+            background-color: #444;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Fast Food Restoran</h1>
+    </header>
+
+    <nav>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul id="menu-list">
+            <li onclick="scrollToSection('pocetna')">Početna</li>
+            <li onclick="scrollToSection('jelovnik')">Jelovnik</li>
+            <li onclick="scrollToSection('lokacija')">Lokacija</li>
+            <li onclick="scrollToSection('kontakt')">Kontakt</li>
+        </ul>
+    </nav>
+
+    <section id="pocetna">
+        <h2>Fast Food Restoran</h2>
+        <p>Dobrodošli! Ovde možete pronaći informacije o našem restoranu.</p>
+    </section>
+
+    <section id="jelovnik">
+        <h2>Jelovnik</h2>
+        <ul>
+            <li>Pljeskavica - $5.99</li>
+            <li>Ćevapi - $7.99</li>
+            <li>Pomfrit - $2.49</li>
+            <!-- Dodajte viÅ¡e proizvoda po istom obrascu -->
+        </ul>
+    </section>
+
+    <section id="lokacija">
+        <h2>Lokacija</h2>
+        <p>Nalazimo se na sledećoj adresi...</p>
+    </section>
+
+    <section id="kontakt">
+        <h2>Kontakt</h2>
+        <p>Za sve informacije kontaktirajte nas na...</p>
+    </section>
+
+  
+
+    <script>
+        function showPage(pageId) {
+            var pages = ['pocetna', 'jelovnik', 'lokacija', 'kontakt'];
+
+            // Sakrij sve stranice
+            pages.forEach(function(page) {
+                document.getElementById(page).style.display = 'none';
+            });
+
+            // Prikazi odabranu stranicu
+            document.getElementById(pageId).style.display = 'block';
+
+            // Sakrij meni nakon odabira stranice (ako je otvoren)
+            document.getElementById('menu-list').style.display = 'none';
+
+            // Skrolovanje do odabranog dela stranice
+            scrollToSection(pageId);
+        }
+
+        function toggleMenu() {
+            var menuList = document.getElementById('menu-list');
+            menuList.style.display = (menuList.style.display === 'none' || menuList.style.display === '') ? 'block' : 'none';
+        }
+
+        function scrollToSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
